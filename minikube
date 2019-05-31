@@ -1,0 +1,33 @@
+#!/bin/sh
+echo "kubectl downloading"
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+
+echo "making to tool binary executable..."
+chmod +x ./kubectl
+echo "moving the binary in to your path"
+if [whoami = "root"]
+then
+	sudo mv ./kubectl /usr/local/bin/kubectl
+else 
+	echo "you need to be root"
+	sudo mv ./kubectl /usr/local/bin/kubectl
+fi
+echo "kubectl installed successfully and this is your current versin"
+kubectl version
+
+echo "installing Minikube"
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
+  && chmod +x minikube
+if [whoami = "root"]
+then
+    	sudo cp minikube /usr/local/bin && rm minikube
+
+else
+    	echo "you need to be root"
+        sudo cp minikube /usr/local/bin && rm minikube
+
+fi
+
+echo "minikube installed successfully"
+echo "minikube start"
+minikube start
