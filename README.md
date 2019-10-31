@@ -32,3 +32,5 @@ copy and paste the url on your borwser to view the details of you the cluster .
 *if you want to delete the service : kubectl delete services name_of_the_service ( in this case hello-minikube)
 
 *if you want to delete the deployment: kubectl delete deployment name_of_deployment 
+
+* Contact me for any help : ferjaymen@live.fr
